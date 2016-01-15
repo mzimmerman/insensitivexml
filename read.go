@@ -622,11 +622,11 @@ Loop:
 				continue Loop
 			}
 		}
-		if len(finfo.parents) == len(parents) && finfo.name == start.Name.Local {
+		if len(finfo.parents) == len(parents) && strings.ToLower(finfo.name) == strings.ToLower(start.Name.Local) {
 			// It's a perfect match, unmarshal the field.
 			return true, p.unmarshal(finfo.value(sv), start)
 		}
-		if len(finfo.parents) > len(parents) && finfo.parents[len(parents)] == start.Name.Local {
+		if len(finfo.parents) > len(parents) && strings.ToLower(finfo.parents[len(parents)]) == strings.ToLower(start.Name.Local) {
 			// It's a prefix for the field. Break and recurse
 			// since it's not ok for one field path to be itself
 			// the prefix for another field path.
