@@ -1056,7 +1056,7 @@ var marshalErrorTests = []struct {
 	},
 	{
 		Value: map[*Ship]bool{nil: false},
-		Err:   "xml: unsupported type: map[*xml.Ship]bool",
+		Err:   "xml: unsupported type: map[*insensitivexml.Ship]bool",
 		Kind:  reflect.Map,
 	},
 	{
