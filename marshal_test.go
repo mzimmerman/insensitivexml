@@ -205,7 +205,7 @@ type OmitAttrTest struct {
 
 type OmitFieldTest struct {
 	Int   int           `xml:",omitempty"`
-	Named int           `xml:"int,omitempty"`
+	Named int           `xml:"namedasint,omitempty"`
 	Float float64       `xml:",omitempty"`
 	Uint8 uint8         `xml:",omitempty"`
 	Bool  bool          `xml:",omitempty"`
@@ -728,10 +728,10 @@ var marshalTests = []struct {
 	},
 
 	// Test that name casing matters
-	{
-		Value:     &NameCasing{Xy: "mixed", XY: "upper", XyA: "mixedA", XYA: "upperA"},
-		ExpectXML: `<casing Xy="mixedA" XY="upperA"><Xy>mixed</Xy><XY>upper</XY></casing>`,
-	},
+	//	{
+	//		Value:     &NameCasing{Xy: "mixed", XY: "upper", XyA: "mixedA", XYA: "upperA"},
+	//		ExpectXML: `<casing Xy="mixedA" XY="upperA"><Xy>mixed</Xy><XY>upper</XY></casing>`,
+	//	},
 
 	// Test the order in which the XML element name is chosen
 	{
@@ -849,7 +849,7 @@ var marshalTests = []struct {
 		},
 		ExpectXML: `<OmitFieldTest>` +
 			`<Int>8</Int>` +
-			`<int>9</int>` +
+			`<namedasint>9</namedasint>` +
 			`<Float>23.5</Float>` +
 			`<Uint8>255</Uint8>` +
 			`<Bool>true</Bool>` +
